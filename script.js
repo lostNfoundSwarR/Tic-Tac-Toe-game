@@ -97,16 +97,20 @@ function checkWinner() {
     for (let i = 0; i < winConditions.length; i++) {
         const condition = winConditions[i];
 
-        /* Get the values of the three cells in the current win condition 
-           (eg. IF options = ["X", "O", "O", etc...] AND condition = [0, 1, 2], cellA = options[conditions[0]] WOULD BE "X")
+    /* Get the values of the three cells that make up the current win condition.
+       
+       For example, if `options = ["X", "O", "O", ...]` and `condition = [0, 1, 2]`, 
+       then `cellA = options[condition[0]]` would give "X".
+    
+       The value `condition[0]` represents the first index in the current win condition.
+       
+       Using `options[condition[0]]`, we can get the value from the `options` array 
+       at the position indicated by the first index in the current win condition.
+    
+       For example, if the win condition is `[0, 4, 8]`, `condition[0]` and `condition[2]`
+       correspond to the values at positions 0 and 8 in the `options` array.
+    */
 
-           condition[0] will represent the first index/number of the current condition..
-
-           options[condition[0]] will represent the value in the options array at the index of the first number/index of
-           the current condition..
-
-           (eg. FOR THE condition [0, 4, 8], condition[0] & condition[2] IS 0 & 8)
-        */
         const cellA = options[condition[0]];
         const cellB = options[condition[1]];
         const cellC = options[condition[2]];
