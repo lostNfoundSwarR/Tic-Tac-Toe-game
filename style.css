@@ -1,0 +1,75 @@
+body {
+    background-color: #f1e3e3;
+}
+
+.cell {
+    width: 80px;
+    height: 75px;
+    line-height: 80px;
+    cursor: pointer;
+}
+
+/* Styling the borders in a specific manner to create a proper game board */
+/* Start */
+
+.cell[cellIndex="1"] {
+    border-left: 4px solid;
+    border-right: 4px solid;
+}
+
+.cell[cellIndex="3"], .cell[cellIndex="4"], .cell[cellIndex="5"] {
+    border-top: 4px solid;
+}
+
+.cell[cellIndex="4"] {
+    border-right: 4px solid;
+    border-left: 4px solid;
+}
+
+.cell[cellIndex="6"], .cell[cellIndex="7"], .cell[cellIndex="8"] {
+    border-top: 4px solid;
+}
+
+.cell[cellIndex="7"] {
+    border-right: 4px solid;
+    border-left: 4px solid;
+}
+
+/* End */
+
+#cellContainer {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 225px;
+    font-size: 50px;
+    margin: auto;
+}
+
+#gameContainer {
+    text-align: center;
+    font-family: "Permanent Marker", cursive;
+}
+
+button {
+    font-size: 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: rgb(247, 36, 36);
+    color: #ffffff;
+}
+
+button:hover {
+    background-color: rgb(227, 33, 33);
+}
+
+button:active {
+    background-color: rgb(183, 13, 13);
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+#statusText {
+    font-size: 2.8rem;
+}
