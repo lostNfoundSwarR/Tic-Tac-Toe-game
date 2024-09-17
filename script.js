@@ -150,7 +150,7 @@ function checkWinner() {
         statusText.textContent = `${currentPlayer} wins`;
         running = false;
     }
-    // If no winner but the board is full, declare a draw
+    // If there is no winner but the board is full, declare a draw
     else if (!options.includes("")) {
         running = false;
         statusText.textContent = "Draw";
