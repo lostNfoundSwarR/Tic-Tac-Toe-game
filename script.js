@@ -34,7 +34,7 @@ function initializeGame() {
     
     //Adds an event listener to all of the elements in the node list
     cells.forEach(cell => cell.addEventListener("click", cellClicked));
-
+//
     restartButton.addEventListener("click", restart);
 
     //Initializing the displays that remind the player what his/her character is
@@ -47,22 +47,28 @@ function initializeGame() {
 
         //Delaying the execution to make it look like the computer is thinking it's move (to make it readable)
         setTimeout(computerMove, 1000);
-    } else {
+    }
+    else {
         statusText.textContent = "Your turn.."; //Refers to the player's turn
     }
 }
 
 function cellClicked() {
-    //Get the attribute value of the cell (Cell Index)
-    const cellIndex = this.getAttribute("cellIndex"); // `this` refers to the `cell` which got clicked
+    if(currentPlayer === player) {
+        //Get the attribute value of the cell (Cell Index)
+        const cellIndex = this.getAttribute("cellIndex"); // `this` refers to the `cell` which got clicked
 
-    // Prevent updating an already filled cell or if the game is not running
-    if (options[cellIndex] != "" || !running) {
-        return; //Preventing by ignoring the move/returning nothing
+        // Prevent updating an already filled cell or if the game is not running
+        if (options[cellIndex] != "" || !running) {
+            return; //Preventing by ignoring the move/returning nothing
+        }
+        
+        updateCell(this, cellIndex); //Update the cell based on the arguments passed
+        checkWinner(); //Check if there are any winners yet
     }
-    
-    updateCell(this, cellIndex); //Update the cell based on the arguments passed
-    checkWinner(); //Check if there are any winners yet
+    else {
+        return;
+    }
 }
 
 function changePlayer() {
@@ -75,7 +81,8 @@ function changePlayer() {
 
         //Delaying the execution to make it look like the computer is thinking (For design and interactive purposes)
         setTimeout(computerMove, 1000);
-    } else {
+    }
+    else {
         statusText.textContent = "Your turn..";
     }
 }
@@ -150,7 +157,7 @@ function checkWinner() {
         statusText.textContent = `${currentPlayer} wins`;
         running = false;
     }
-    // If there is no winner but the board is full, declare a draw
+    // If no winner but the board is full, declare a draw
     else if (!options.includes("")) {
         running = false;
         statusText.textContent = "Draw";
@@ -169,7 +176,7 @@ function restart() {
         cell.style.color = "black";                   
     });
 
-    statusText.style.visibility = "hidden";
+    statusText.value = "ltw1";
 
     initializeGame();
 }
